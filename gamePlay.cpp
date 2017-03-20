@@ -85,24 +85,16 @@ bool gamePlay::possible() {
 
 void gamePlay::mRight() {
 	piece.mright();
-	if (possible() && !options.absolutePlacement)
+	if (possible())
 		draw();
-	else if (possible() && options.absolutePlacement)
-	{
-		//don't call draw because absolutePlacement() calls hd() which calls draw()
-	}
 	else
 		piece.mleft();
 }
 
 void gamePlay::mLeft() {
 	piece.mleft();
-	if (possible() && !options.absolutePlacement)
+	if (possible())
 		draw();
-	else if (possible() && options.absolutePlacement)
-	{
-		//don't call draw because absolutePlacement() calls hd() which calls draw()
-	}
 	else
 		piece.mright();
 }
@@ -133,9 +125,6 @@ void gamePlay::rcw() {
 	piece.rcw();
 	if (possible() && !options.absolutePlacement) {
 		draw(); return;
-	}
-	else if (possible() && options.absolutePlacement) {
-		return; //don't call draw because absolutePlacement() calls hd() which calls draw()
 	}
 	piece.posX--; if (possible()) { draw(); return; }
 	piece.posX += 2; if (possible()) { draw(); return; }
