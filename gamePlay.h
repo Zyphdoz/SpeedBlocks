@@ -160,6 +160,8 @@ public:
 	void rccw();
 	void r180();
 
+	void absolutePlacement(int distanceFromWall, int numRotates);
+
 	void addPiece();
 	void makeNewPiece();
 

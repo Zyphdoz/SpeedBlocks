@@ -85,16 +85,24 @@ bool gamePlay::possible() {
 
 void gamePlay::mRight() {
 	piece.mright();
-	if (possible())
+	if (possible() && !options.absolutePlacement)
 		draw();
+	else if (possible() && options.absolutePlacement)
+	{
+		//don't call draw because absolutePlacement() calls hd() which calls draw()
+	}
 	else
 		piece.mleft();
 }
 
 void gamePlay::mLeft() {
 	piece.mleft();
-	if (possible())
+	if (possible() && !options.absolutePlacement)
 		draw();
+	else if (possible() && options.absolutePlacement)
+	{
+		//don't call draw because absolutePlacement() calls hd() which calls draw()
+	}
 	else
 		piece.mright();
 }
@@ -121,20 +129,23 @@ void gamePlay::hd() {
 }
 
 void gamePlay::rcw() {
-	autoaway=false;
+	autoaway = false;
 	piece.rcw();
-	if (possible()) {
+	if (possible() && !options.absolutePlacement) {
 		draw(); return;
 	}
+	else if (possible() && options.absolutePlacement) {
+		return; //don't call draw because absolutePlacement() calls hd() which calls draw()
+	}
 	piece.posX--; if (possible()) { draw(); return; }
-	piece.posX+=2; if (possible()) { draw(); return; }
+	piece.posX += 2; if (possible()) { draw(); return; }
 	piece.posX--; piece.posY++; if (possible()) { draw(); return; }
 	piece.posX--; if (possible()) { draw(); return; }
-	piece.posX+=2; if (possible()) { draw(); return; }
-	piece.posX-=3; piece.posY--; if (possible()) { draw(); return; }
-	piece.posX+=4; if (possible()) { draw(); return; }
+	piece.posX += 2; if (possible()) { draw(); return; }
+	piece.posX -= 3; piece.posY--; if (possible()) { draw(); return; }
+	piece.posX += 4; if (possible()) { draw(); return; }
 
-	piece.posX-=2;
+	piece.posX -= 2;
 	piece.rccw();
 }
 
@@ -174,6 +185,31 @@ void gamePlay::r180() {
 	piece.posX-=2;
 	piece.rcw();
 	piece.rcw();
+}
+
+void gamePlay::absolutePlacement(int distanceFromWall, int numRotates)
+{
+	for (int i = 0; i < numRotates; i++)
+	{
+		piece.rcw();
+	}
+	while (possible())
+	{
+		piece.mleft();
+	}
+	piece.mright();
+	for (int i = 0; i < distanceFromWall; i++)
+	{
+		if (possible())
+		{
+			piece.mright();
+		}
+		if (!possible())
+		{
+			piece.mleft();
+		}
+	}
+	hd();
 }
 
 void gamePlay::addPiece() {

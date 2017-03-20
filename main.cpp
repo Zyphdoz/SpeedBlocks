@@ -202,7 +202,7 @@ int main()
                         window.setView(view);
                         gui.gui.setView(view);
                     }
-                    else if (event.type == sf::Event::KeyPressed && !gui.chatFocused) {
+                    else if (event.type == sf::Event::KeyPressed && !gui.chatFocused && !game.options.absolutePlacement) {
                         if (event.key.code == game.options.right)
                             game.mRKey();
                         else if (event.key.code == game.options.left)
@@ -228,7 +228,89 @@ int main()
                                 gui.goAway();
                         }
                     }
-                    else if (event.type == sf::Event::KeyReleased) {
+					else if (event.type == sf::Event::KeyPressed && !gui.chatFocused && game.options.absolutePlacement) {
+						if (event.key.code == game.options.c0r0)
+							game.absolutePlacement(0, 0);
+						if (event.key.code == game.options.c1r0)
+							game.absolutePlacement(1, 0);
+						if (event.key.code == game.options.c2r0)
+							game.absolutePlacement(2, 0);
+						if (event.key.code == game.options.c3r0)
+							game.absolutePlacement(3, 0);
+						if (event.key.code == game.options.c4r0)
+							game.absolutePlacement(4, 0);
+						if (event.key.code == game.options.c5r0)
+							game.absolutePlacement(5, 0);
+						if (event.key.code == game.options.c6r0)
+							game.absolutePlacement(6, 0);
+						if (event.key.code == game.options.c7r0)
+							game.absolutePlacement(7, 0);
+						if (event.key.code == game.options.c8r0)
+							game.absolutePlacement(8, 0);
+						if (event.key.code == game.options.c9r0)
+							game.absolutePlacement(9, 0);
+						if (event.key.code == game.options.c0r1)
+							game.absolutePlacement(0, 1);
+						if (event.key.code == game.options.c1r1)
+							game.absolutePlacement(1, 1);
+						if (event.key.code == game.options.c2r1)
+							game.absolutePlacement(2, 1);
+						if (event.key.code == game.options.c3r1)
+							game.absolutePlacement(3, 1);
+						if (event.key.code == game.options.c4r1)
+							game.absolutePlacement(4, 1);
+						if (event.key.code == game.options.c5r1)
+							game.absolutePlacement(5, 1);
+						if (event.key.code == game.options.c6r1)
+							game.absolutePlacement(6, 1);
+						if (event.key.code == game.options.c7r1)
+							game.absolutePlacement(7, 1);
+						if (event.key.code == game.options.c8r1)
+							game.absolutePlacement(8, 1);
+						if (event.key.code == game.options.c9r1)
+							game.absolutePlacement(9, 1);
+						if (event.key.code == game.options.c0r2)
+							game.absolutePlacement(0, 2);
+						if (event.key.code == game.options.c1r2)
+							game.absolutePlacement(1, 2);
+						if (event.key.code == game.options.c2r2)
+							game.absolutePlacement(2, 2);
+						if (event.key.code == game.options.c3r2)
+							game.absolutePlacement(3, 2);
+						if (event.key.code == game.options.c4r2)
+							game.absolutePlacement(4, 2);
+						if (event.key.code == game.options.c5r2)
+							game.absolutePlacement(5, 2);
+						if (event.key.code == game.options.c6r2)
+							game.absolutePlacement(6, 2);
+						if (event.key.code == game.options.c7r2)
+							game.absolutePlacement(7, 2);
+						if (event.key.code == game.options.c8r2)
+							game.absolutePlacement(8, 2);
+						if (event.key.code == game.options.c9r2)
+							game.absolutePlacement(9, 2);
+						if (event.key.code == game.options.c0r3)
+							game.absolutePlacement(0, 3);
+						if (event.key.code == game.options.c1r3)
+							game.absolutePlacement(1, 3);
+						if (event.key.code == game.options.c2r3)
+							game.absolutePlacement(2, 3);
+						if (event.key.code == game.options.c3r3)
+							game.absolutePlacement(3, 3);
+						if (event.key.code == game.options.c4r3)
+							game.absolutePlacement(4, 3);
+						if (event.key.code == game.options.c5r3)
+							game.absolutePlacement(5, 3);
+						if (event.key.code == game.options.c6r3)
+							game.absolutePlacement(6, 3);
+						if (event.key.code == game.options.c7r3)
+							game.absolutePlacement(7, 3);
+						if (event.key.code == game.options.c8r3)
+							game.absolutePlacement(8, 3);
+						if (event.key.code == game.options.c9r3)
+							game.absolutePlacement(9, 3);
+					}
+                    else if (event.type == sf::Event::KeyReleased && !game.options.absolutePlacement) {
                         if (event.key.code == game.options.right)
                             game.sRKey();
                         else if (event.key.code == game.options.left)
